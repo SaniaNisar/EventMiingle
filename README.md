@@ -1,6 +1,6 @@
 # 🎉 EventMingle – Party Management System
 
-**EventMingle** is a mobile application designed to streamline the planning, organizing, and managing of personal and social events such as birthdays, weddings, and social gatherings. Built with Firebase and developed using Java (Android) or Flutter (cross-platform), the app aims to provide a seamless experience for both event hosts and attendees.
+**EventMingle** is a mobile application designed to streamline the planning, organizing, and managing of personal and social events such as birthdays, weddings, and social gatherings. Built with Firebase and developed using Java (Android), the app aims to provide a seamless experience for both event hosts and attendees.
 
 
 ## 📌 Introduction
