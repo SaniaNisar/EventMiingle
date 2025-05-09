@@ -1,5 +1,25 @@
 <resources>
-    <string name="app_name">EventMingle</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">AppDesign</string>
+    <string name="resend">Resend</string>
+    <string name="confirm_pin">Confirm PIN</string>
+    <string name="for_email_conformation_please_verify_your_pin">For email conformation, please verify your PIN.</string>
+    <string name="verify_your_pin">Verify your PIN</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up_btn">Sign Up</string>
+    <string name="or_connect_with">or connect with</string>
+    <string name="facebook">Facebook</string>
+    <string name="gmail">Gmail</string>
+    <string name="already_have_an_account_login">Already have an account? Login</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="login">Login</string>
+    <string name="sign_up_tv">Sign Up</string>
+    <string name="password_login">Password</string>
+    <string name="username">Username</string>
+    <string name="login_title">Login</string>
+    <string name="month">MAY</string>
+    <string name="date">14</string>
+    <string name="today_task">No.Task in Upcoming week</string>
+    <string name="today_date">14</string>
 </resources>
