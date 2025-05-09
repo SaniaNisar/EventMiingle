@@ -54,7 +54,7 @@ In today's fast-paced world, organizing an event requires efficient coordination
 ## 📲 Getting Started
 
 ### Prerequisites
-- Flutter SDK installed
+- SDK installed
 - Firebase project configured
 - Android Studio or VS Code
 
