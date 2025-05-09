@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/resume_background">
+
+    <!-- Animated FrameLayout containing both the Circle and Logo -->
+    <FrameLayout
+        android:id="@+id/logoContainer"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true">
+
+        <!-- Background Circle -->
+        <ImageView
+            android:id="@+id/bgCircle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/circle_background" />
+
+        <!-- Logo on Top of Circle -->
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo" />
+    </FrameLayout>
+
+</RelativeLayout>

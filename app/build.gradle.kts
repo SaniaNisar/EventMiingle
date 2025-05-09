@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -32,10 +33,18 @@ android {
 }
 
 dependencies {
-
+    implementation (libs.firebase.auth)
+    implementation (libs.google.firebase.auth)
+    implementation (libs.firebase.firestore)
+    implementation (libs.firebase.storage)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(libs.firebase.database)
+    implementation(libs.activity)
+    implementation(libs.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation (libs.google.firebase.firestore)
+    implementation (libs.google.firebase.storage)
 }
