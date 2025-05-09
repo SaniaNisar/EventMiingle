@@ -2,13 +2,11 @@
 
 **EventMingle** is a mobile application designed to streamline the planning, organizing, and managing of personal and social events such as birthdays, weddings, and social gatherings. Built with Firebase and developed using Java (Android) or Flutter (cross-platform), the app aims to provide a seamless experience for both event hosts and attendees.
 
----
 
 ## 📌 Introduction
 
 In today's fast-paced world, organizing an event requires efficient coordination, real-time updates, and easy management of tasks. **EventMingle** is developed to address these needs by offering an all-in-one mobile solution that simplifies the process of hosting events — from guest list handling to budgeting and task scheduling.
 
----
 
 ## 🎯 Core Objectives
 
@@ -16,7 +14,6 @@ In today's fast-paced world, organizing an event requires efficient coordination
 - 🔄 Enable real-time synchronization and updates using Firebase.
 - 🛠 Provide a comprehensive set of tools including guest management, budgeting, vendor coordination, and event scheduling.
 
----
 
 ## ✨ Features
 
@@ -44,7 +41,6 @@ In today's fast-paced world, organizing an event requires efficient coordination
 - Dynamic scheduling to visualize the event flow
 - Stay on track with real-time updates
 
----
 
 ## 🛠 Technology Stack
 
@@ -54,11 +50,8 @@ In today's fast-paced world, organizing an event requires efficient coordination
 | Backend Services   | Firebase (Auth, DB, Hosting) |
 | API Integration    | Social media sharing, calendar sync |
 
----
 
 ## 📲 Getting Started
-
-> _Note: Instructions below assume Flutter as the development framework. For Java (Android), adapt accordingly._
 
 ### Prerequisites
 - Flutter SDK installed
