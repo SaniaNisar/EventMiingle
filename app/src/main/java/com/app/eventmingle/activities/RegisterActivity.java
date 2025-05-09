@@ -71,20 +71,14 @@ public class RegisterActivity extends AppCompatActivity {
 
 
             auth.createUserWithEmailAndPassword(name, password)
-                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                        @Override
-                        public void onSuccess(AuthResult authResult) {
-                            Toast.makeText(RegisterActivity.this, "User created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                            finish();
-                        }
+                    .addOnSuccessListener(authResult -> {
+                        startActivity(new Intent(this, MainActivity.class));
+                        finish();
                     })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
+
 
         });
 
