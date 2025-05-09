@@ -1,33 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/resume_background">
+    android:background="@color/plum"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <!-- Animated FrameLayout containing both the Circle and Logo -->
-    <FrameLayout
-        android:id="@+id/logoContainer"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerInParent="true">
+    <!-- App Logo -->
+    <ImageView
+        android:id="@+id/splash_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="403dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/splash_logo" />
 
-        <!-- Background Circle -->
-        <ImageView
-            android:id="@+id/bgCircle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/circle_background" />
 
-        <!-- Logo on Top of Circle -->
-        <ImageView
-            android:id="@+id/logoImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:scaleType="fitCenter"
-            android:src="@drawable/logo" />
-    </FrameLayout>
+    <!-- Spacing -->
 
-</RelativeLayout>
+    <!-- App Name -->
+
+</LinearLayout>
