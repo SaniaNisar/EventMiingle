@@ -11,7 +11,7 @@
         android:id="@+id/login_card"
         android:layout_width="327dp"
         android:layout_height="380dp"
-        android:background="@drawable/card_white_rounded"
+        android:background="@drawable/card_yellow_rounded"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,7 @@
                 android:contentDescription="@null"
                 android:padding="8dp"
                 android:src="@drawable/ic_person_24"
-                android:tint="#888888" />
+                app:tint="#888888" />
 
             <EditText
                 android:id="@+id/etLoginUsername"
@@ -82,7 +82,7 @@
                 android:contentDescription="@null"
                 android:padding="8dp"
                 android:src="@drawable/ic_lock_24"
-                android:tint="#4E4949" />
+                app:tint="#4E4949" />
 
             <EditText
                 android:id="@+id/etLoginPassword"
