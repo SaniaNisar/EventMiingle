@@ -3,9 +3,9 @@ package com.app.eventmingle.activities;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
+//import android.view.animation.Animation;
+//import android.view.animation.AnimationUtils;
+//import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.eventmingle.R;
@@ -21,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
 
         // Apply animation to the FrameLayout (logo + background circle)
 
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.logo_animation);
+        //Animation animation = AnimationUtils.loadAnimation(this, R.anim.logo_animation);
 
         new Handler().postDelayed(() -> {
             mAuth =  FirebaseAuth.getInstance();
