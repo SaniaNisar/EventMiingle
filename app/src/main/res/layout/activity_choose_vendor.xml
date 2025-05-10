@@ -1,6 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:startIconDrawable="@android:drawable/ic_menu_search"
+        app:startIconTint="@color/black"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="         Search Vendor"
+            android:inputType="text"
+            android:imeOptions="actionSearch" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+
+
+    <GridLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:useDefaultMargins="true"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false">
+
+
+        <LinearLayout style="@style/CategoryCard">
+
+            <ImageView
+                android:id="@+id/vendorVenue"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:src="@drawable/venues"
+                android:contentDescription="Venues" />
+            <TextView style="@style/CategoryLabel" android:text="VENUES" />
+        </LinearLayout>
+
+        <!-- Photographers -->
+        <LinearLayout style="@style/CategoryCard">
+            <ImageView
+                android:id="@+id/vendorPhotographer"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:src="@drawable/photographers"
+                android:contentDescription="Photographers" />
+            <TextView style="@style/CategoryLabel" android:text="PHOTOGRAPHERS" />
+        </LinearLayout>
+
+        <!-- Makeup Artists -->
+        <LinearLayout style="@style/CategoryCard">
+            <ImageView
+                android:id="@+id/vendorMakeupArtist"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:src="@drawable/makeup_artists"
+                android:contentDescription="Makeup Artists" />
+            <TextView style="@style/CategoryLabel" android:text="MAKEUP ARTISTS" />
+        </LinearLayout>
+
+        <!-- Decor -->
+        <LinearLayout style="@style/CategoryCard">
+            <ImageView
+                android:id="@+id/vendorDecor"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:src="@drawable/decor"
+                android:contentDescription="Decor"
+                />
+            <TextView style="@style/CategoryLabel" android:text="DECOR"
+               />
+        </LinearLayout>
+
+        <!-- Catering -->
+        <LinearLayout style="@style/CategoryCard">
+            <ImageView
+                android:id="@+id/vendorCatering"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:src="@drawable/catering"
+                android:contentDescription="Catering" />
+            <TextView style="@style/CategoryLabel" android:text="CATERING" />
+        </LinearLayout>
+
+        <!-- Henna Artists -->
+        <LinearLayout style="@style/CategoryCard">
+            <ImageView
+                android:id="@+id/vendorHennaArtist"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:src="@drawable/henna_artists"
+                android:contentDescription="Henna Artists" />
+            <TextView style="@style/CategoryLabel" android:text="HENNA ARTISTS" />
+        </LinearLayout>
+
+        <!-- Wedding Stationery -->
+        <LinearLayout style="@style/CategoryCard">
+            <ImageView
+                android:id="@+id/vendorEventStationery"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:src="@drawable/wedding_stationery"
+                android:contentDescription="Event Stationery" />
+            <TextView style="@style/CategoryLabel" android:text="EVENT STATIONERY" />
+        </LinearLayout>
+
+        <!-- Bridal Wear -->
+        <LinearLayout style="@style/CategoryCard">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:src="@drawable/dress"
+                android:id="@+id/vendorDresses"
+                android:contentDescription="Event Wear" />
+            <TextView style="@style/CategoryLabel" android:text="EVENT WEAR" />
+        </LinearLayout>
+
+
+
+    </GridLayout>
+</ScrollView>
+</LinearLayout>
