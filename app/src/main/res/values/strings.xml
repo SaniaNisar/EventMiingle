@@ -28,4 +28,8 @@
     <string name="SingUpPasswordHint">Password</string>
     <string name="ConfirmPasswordHint">Re-enter Password</string>
     <string name="NoAccountQuestion">Don\'t have an account?</string>
+    <string name="RoleSelection">Select Your Role</string>
+    <string name="RoleContinueButtonText">Continue</string>
+    <string name="Role2">Vendor</string>
+    <string name="Role1">User</string>
 </resources>
