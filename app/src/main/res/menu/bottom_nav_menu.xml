@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item
+        android:id="@+id/nav_events"
+        android:icon="@drawable/ic_calendar"
+        android:title="Events" />
+    <item
+        android:id="@+id/nav_timeline"
+        android:icon="@drawable/ic_clock"
+        android:title="Timeline" />
+    <item
+        android:id="@+id/nav_budget"
+        android:icon="@drawable/ic_bell"
+        android:title="Budget" />
+    <item
+        android:id="@+id/nav_guests"
+        android:icon="@drawable/ic_user"
+        android:title="Guests" />
 </menu>
