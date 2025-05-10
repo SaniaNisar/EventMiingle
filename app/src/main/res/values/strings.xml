@@ -22,4 +22,10 @@
     <string name="date">14</string>
     <string name="today_task">No.Task in Upcoming week</string>
     <string name="today_date">14</string>
+    <string name="AppName">EventMingle</string>
+    <string name="LoginTextFieldHint">Phone number, username or email address</string>
+    <string name="SignUpUserHint">Phone number, username or email address</string>
+    <string name="SingUpPasswordHint">Password</string>
+    <string name="ConfirmPasswordHint">Re-enter Password</string>
+    <string name="NoAccountQuestion">Don\'t have an account?</string>
 </resources>
