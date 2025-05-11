@@ -47,4 +47,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation (libs.google.firebase.firestore)
     implementation (libs.google.firebase.storage)
+    implementation (libs.github.glide)
+    annotationProcessor (libs.github.compiler)
+    implementation(libs.com.google.firebase.firebase.storage.v2030.x2)
+
 }

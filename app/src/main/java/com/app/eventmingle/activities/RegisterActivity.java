@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                         FirebaseUtils.getUsersRef().child(uid).setValue(user)
                                 .addOnSuccessListener(unused -> {
                                     Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(this, MainActivity.class));
+                                    startActivity(new Intent(this, DashboardActivity.class));
                                     finish();
                                 })
                                 .addOnFailureListener(e -> {

@@ -1,0 +1,79 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".activities.ProfileActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<!--        <ImageView-->
+<!--            android:id="@+id/profileImage"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            android:layout_marginBottom="30dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/ic_person_24" />-->
+
+
+        <TextView
+            android:id="@+id/Profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Profile"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:textColor="?android:textColorPrimary"
+            android:layout_marginBottom="20dp" />
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email" />
+
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:layout_marginTop="20dp"
+            android:text="Save Profile"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/tvEventsLabel"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginTop="24dp"
+            android:textColor="?android:textColorPrimary"
+            android:text="Created Events"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textAlignment="center"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewEvents"
+            android:layout_width="match_parent"
+            android:layout_height="302dp" />
+    </LinearLayout>
+</ScrollView>

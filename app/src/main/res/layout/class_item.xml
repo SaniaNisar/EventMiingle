@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:background="@drawable/bg_event_gradient"
     android:padding="16dp"
-    android:marginBottom="8dp"
+    android:layout_marginBottom="8dp"
     android:elevation="4dp">
 
     <!-- Class Title -->
@@ -12,7 +12,6 @@
         android:id="@+id/classTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/eventname"
         android:textSize="24sp"
         android:textColor="@color/white"
         android:textStyle="bold" />
@@ -24,7 +23,6 @@
         android:id="@+id/classCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/smalldescriptionofevent"
         android:textSize="16sp"
         android:layout_marginTop="4dp"
         android:textColor="@color/black" />

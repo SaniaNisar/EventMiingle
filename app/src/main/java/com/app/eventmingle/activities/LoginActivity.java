@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         // Auto-login if already authenticated
         FirebaseUser user = FirebaseUtils.getCurrentUser();
         if (user != null) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
             finish();
         }
 
@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 
             FirebaseUtils.getAuth().signInWithEmailAndPassword(email, password)
                     .addOnSuccessListener(authResult -> {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                         finish();
                     })
                     .addOnFailureListener(e ->
