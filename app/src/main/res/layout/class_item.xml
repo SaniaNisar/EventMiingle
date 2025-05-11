@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_event_gradient"
+    android:padding="16dp"
+    android:marginBottom="8dp"
+    android:elevation="4dp">
+
+    <!-- Class Title -->
+    <TextView
+        android:id="@+id/classTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/eventname"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+
+
+    <!-- Class Category (Optional) -->
+    <TextView
+        android:id="@+id/classCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/smalldescriptionofevent"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/black" />
+
+</LinearLayout>
