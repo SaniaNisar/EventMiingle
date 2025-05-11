@@ -9,18 +9,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.app.eventmingle.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
+import com.app.eventmingle.models.User;
+import com.app.eventmingle.utils.FirebaseUtils;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -28,70 +27,87 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnSignup;
     EditText etName, etPassword, etCPassword;
 
-    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // Hide action bar if present
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
         init();
 
-        tvLogin.setOnClickListener(v->{
+        tvLogin.setOnClickListener(v -> {
             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             finish();
         });
 
-        btnSignup.setOnClickListener(v->{
-            String name = etName.getText().toString().trim();
+        btnSignup.setOnClickListener(v -> {
+            String email = etName.getText().toString().trim();
             String password = etPassword.getText().toString();
             String cpassword = etCPassword.getText().toString();
 
-            if(TextUtils.isEmpty(name))
-            {
-                etName.setError("Enter the name");
+            if (TextUtils.isEmpty(email)) {
+                etName.setError("Enter your email");
                 return;
             }
 
-            if(TextUtils.isEmpty(password))
-            {
-                etPassword.setError("Enter the password");
+            if (TextUtils.isEmpty(password)) {
+                etPassword.setError("Enter your password");
                 return;
             }
 
-            if(TextUtils.isEmpty(cpassword))
-            {
-                etPassword.setError("Enter the password again");
+            if (TextUtils.isEmpty(cpassword)) {
+                etCPassword.setError("Confirm your password");
                 return;
             }
 
-            if(!password.equals(cpassword))
-            {
-                etPassword.setError("password mis-match");
-                etCPassword.setError("password mis-match");
+            if (!password.equals(cpassword)) {
+                etPassword.setError("Password mismatch");
+                etCPassword.setError("Password mismatch");
                 return;
             }
 
-
-            auth.createUserWithEmailAndPassword(name, password)
+            // Firebase Auth registration
+            FirebaseUtils.getAuth().createUserWithEmailAndPassword(email, password)
                     .addOnSuccessListener(authResult -> {
-                        startActivity(new Intent(this, MainActivity.class));
-                        finish();
+                        String uid = FirebaseUtils.getCurrentUserId();
+
+                        // Initialize empty user profile
+                        User user = new User();
+                        user.setEmail(email);
+                        user.setRole("attendee"); // default role, can be updated later
+                        user.setName("");
+                        user.setPhoneNumber("");
+                        user.setProfileImageUrl("");
+                        user.setCreatedEvents(new HashMap<>());
+                        user.setInvitedEvents(new HashMap<>());
+                        user.setAcceptedInvites(new HashMap<>());
+                        user.setManagingEvents(new HashMap<>());
+                        user.setVendorServices(new HashMap<>());
+
+                        // Save user profile to Realtime DB
+                        FirebaseUtils.getUsersRef().child(uid).setValue(user)
+                                .addOnSuccessListener(unused -> {
+                                    Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(this, MainActivity.class));
+                                    finish();
+                                })
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(this, "Failed to save profile: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                });
                     })
                     .addOnFailureListener(e -> {
-                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Registration failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     });
-
-
         });
-
     }
 
-    private  void init()
-    {
+    private void init() {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -103,6 +119,5 @@ public class RegisterActivity extends AppCompatActivity {
         etName = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         etCPassword = findViewById(R.id.etConfirmPassword);
-        auth = FirebaseAuth.getInstance();
     }
 }
