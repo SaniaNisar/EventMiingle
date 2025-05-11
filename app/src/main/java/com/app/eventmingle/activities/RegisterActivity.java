@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,17 +26,20 @@ public class RegisterActivity extends AppCompatActivity {
 
     TextView tvLogin;
     Button btnSignup;
-    TextInputEditText etName, etPassword, etCPassword;
+    EditText etName, etPassword, etCPassword;
 
     FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        // Hide action bar if present
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         init();
 
         tvLogin.setOnClickListener(v->{
-            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             finish();
         });
 
@@ -96,9 +100,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         tvLogin = findViewById(R.id.tvLogin);
         btnSignup = findViewById(R.id.btnSignup);
-        etName = findViewById(R.id.etName);
+        etName = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
-        etCPassword = findViewById(R.id.etConformPassword);
+        etCPassword = findViewById(R.id.etConfirmPassword);
         auth = FirebaseAuth.getInstance();
     }
 }
