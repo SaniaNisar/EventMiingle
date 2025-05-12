@@ -14,6 +14,7 @@ public class Event {
     private String hostName; // You can fetch this using hostId from user data
     private String theme;
     private String category;
+    private String budgetItemId;
     private double budget;
     private long createdAt;
 
@@ -36,6 +37,15 @@ public class Event {
     }
 
     // Getters and setters
+
+
+    public String getBudgetItemId() {
+        return budgetItemId;
+    }
+
+    public void setBudgetItemId(String budgetItemId) {
+        this.budgetItemId = budgetItemId;
+    }
 
     public void setEventId(String eventId)
     {
