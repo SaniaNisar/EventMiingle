@@ -62,6 +62,10 @@ public class FirebaseUtils {
     public static DatabaseReference getInvitationsRef() {
         return getDatabase().child("invitations");
     }
+    public static DatabaseReference getGuestsRef() {
+        return FirebaseDatabase.getInstance().getReference("guests");
+    }
+
 
     // Check if user is logged in
     public static boolean isUserLoggedIn() {

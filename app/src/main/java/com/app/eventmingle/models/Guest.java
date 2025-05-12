@@ -1,39 +1,51 @@
 package com.app.eventmingle.models;
 
 public class Guest {
-    private String userId;
-    private String status; // invited, accepted, declined
-    private String arrivalTime;
+    private String guestId;
+    private String hostId;
+    private String eventId;
+    private String email;
 
-    public Guest() {}
-
-    public Guest(String userId, String status, String arrivalTime) {
-        this.userId = userId;
-        this.status = status;
-        this.arrivalTime = arrivalTime;
+    public Guest() {
+        // Required empty constructor for Firebase
     }
 
-    public String getUserId() {
-        return userId;
+    public Guest(String guestId, String hostId, String eventId, String email) {
+        this.guestId = guestId;
+        this.hostId = hostId;
+        this.eventId = eventId;
+        this.email = email;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public String getGuestId() {
+        return guestId;
     }
 
-    public String getStatus() {
-        return status;
+    public void setGuestId(String guestId) {
+        this.guestId = guestId;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public String getHostId() {
+        return hostId;
     }
 
-    public String getArrivalTime() {
-        return arrivalTime;
+    public void setHostId(String hostId) {
+        this.hostId = hostId;
     }
 
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

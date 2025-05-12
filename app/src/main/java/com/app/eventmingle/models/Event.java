@@ -18,6 +18,8 @@ public class Event {
     private long createdAt;
 
     private Map<String, Boolean> guestList;
+    private Map<String, Boolean> vendorList;
+
 
     public Event() {
     }
@@ -45,7 +47,7 @@ public class Event {
         return this.eventId;
     }
     public String getEventName() {
-        return eventName;
+        return this.eventName;
     }
 
     public void setEventName(String eventName) {
@@ -70,6 +72,14 @@ public class Event {
 
     public String getVenue() {
         return venue;
+    }
+
+    public Map<String, Boolean> getVendorList() {
+        return vendorList;
+    }
+
+    public void setVendorList(Map<String, Boolean> vendorList) {
+        this.vendorList = vendorList;
     }
 
     public void setVenue(String venue) {

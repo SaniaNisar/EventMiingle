@@ -2,6 +2,8 @@ package com.app.eventmingle.fragments;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -135,10 +137,18 @@ public class AddEventFragment extends Fragment {
             event.setHostName(hostName);
             event.setCreatedAt(System.currentTimeMillis());
 
+            // Save the event in SharedPreferences
+            saveEventToSharedPrefs(event);
+
+            // Save event to Firebase
             DatabaseReference eventRef = FirebaseUtils.getEventsRef().child(eventId);
             eventRef.setValue(event).addOnSuccessListener(unused -> {
                 Toast.makeText(getContext(), "Event created!", Toast.LENGTH_SHORT).show();
                 clearFields();
+
+                // Update the user role to "host" after event creation
+                updateUserRoleToHost(uid, eventId);
+
             }).addOnFailureListener(e -> {
                 Toast.makeText(getContext(), "Failed to create event: " + e.getMessage(), Toast.LENGTH_LONG).show();
             });
@@ -147,6 +157,46 @@ public class AddEventFragment extends Fragment {
             Toast.makeText(getContext(), "Failed to fetch user info", Toast.LENGTH_LONG).show();
         });
     }
+
+    // Method to save event to SharedPreferences
+    private void saveEventToSharedPrefs(Event event) {
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("EventPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("eventId", event.getEventId());
+        editor.putString("eventName", event.getEventName());
+        editor.putString("eventDescription", event.getDescription());
+        editor.putString("eventTheme", event.getTheme());
+        editor.putString("eventCategory", event.getCategory());
+        editor.putString("eventVenue", event.getVenue());
+        editor.putString("eventDateTime", event.getDateTime());
+        editor.putString("hostId", event.getHostId());
+        editor.putString("hostName", event.getHostName());
+        editor.putLong("createdAt", event.getCreatedAt());
+        editor.apply();
+    }
+
+    // Method to update the user's role to "host"
+    private void updateUserRoleToHost(String uid, String eventId) {
+        DatabaseReference userRef = FirebaseUtils.getUsersRef().child(uid);
+
+        // First update role to host
+        userRef.child("role").setValue("host")
+                .addOnSuccessListener(unused -> {
+                    // Then add the created event to the user's createdEvents map
+                    userRef.child("createdEvents").child(eventId).setValue(true)
+                            .addOnSuccessListener(aVoid -> {
+                                Toast.makeText(getContext(), "Event added to your created events!", Toast.LENGTH_SHORT).show();
+                            })
+                            .addOnFailureListener(e -> {
+                                Toast.makeText(getContext(), "Failed to add event to user: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            });
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Failed to update role: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                });
+    }
+
 
     private void clearFields() {
         etEventName.setText("");
