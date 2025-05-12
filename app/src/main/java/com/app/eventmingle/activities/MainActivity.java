@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Load default fragment
-        //loadFragment(new EventsFragment());
+        loadFragment(new AddEventFragment());
 
         // Handle bottom navigation item selection
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
