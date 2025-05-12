@@ -9,6 +9,7 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import com.app.eventmingle.R;
 import com.app.eventmingle.models.Event;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -34,7 +35,11 @@ public class AddEventFragment extends Fragment {
         editTextVenue = rootView.findViewById(R.id.editTextVenue);
         buttonSaveEvent = rootView.findViewById(R.id.buttonSaveEvent);
 
-        eventsRef = FirebaseDatabase.getInstance().getReference("events");
+        // Get the current user's ID from Firebase Authentication
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Modify the reference to save events under this user's node
+        eventsRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("events");
 
         buttonSaveEvent.setOnClickListener(v -> saveEvent());
 
@@ -49,6 +54,7 @@ public class AddEventFragment extends Fragment {
         String venue = editTextVenue.getText().toString();
 
         if (!title.isEmpty() && !description.isEmpty() && !date.isEmpty() && !time.isEmpty() && !venue.isEmpty()) {
+            // Create a new event
             String id = eventsRef.push().getKey();
             Event event = new Event();
             event.setTitle(title);
@@ -58,9 +64,11 @@ public class AddEventFragment extends Fragment {
             event.setVenue(venue);
             event.setCreatedAt(System.currentTimeMillis());
 
+            // Save the event under the current user's events node
             eventsRef.child(id).setValue(event);
 
-            getActivity().getSupportFragmentManager().popBackStack();  // Close the fragment
+            // Close the fragment after saving the event
+            getActivity().getSupportFragmentManager().popBackStack();
         }
     }
 }
