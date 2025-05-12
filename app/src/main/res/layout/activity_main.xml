@@ -16,43 +16,6 @@
         android:layout_marginBottom="80dp"
         />
 
-    <LinearLayout
-        android:id="@+id/buttonPanel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="16dp">
-
-        <Button
-            android:id="@+id/btn_event_details"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Event Details"
-            android:layout_marginBottom="12dp"/>
-
-        <Button
-            android:id="@+id/btn_guest_management"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guest Management"
-            android:layout_marginBottom="12dp"/>
-
-        <Button
-            android:id="@+id/btn_budget_planner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Budget Planner"
-            android:layout_marginBottom="12dp"/>
-
-        <Button
-            android:id="@+id/btn_vendors"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Vendors"/>
-
-    </LinearLayout>
-
     <!-- BottomNavigationView -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

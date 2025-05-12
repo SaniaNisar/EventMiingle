@@ -25,8 +25,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
-    Button btnEventDetails, btnGuestManagement, btnBudgetPlanner, btnVendors;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +43,8 @@ public class MainActivity extends AppCompatActivity {
         // Initialize UI elements
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        btnEventDetails = findViewById(R.id.btn_event_details);
-        btnGuestManagement = findViewById(R.id.btn_guest_management);
-        btnBudgetPlanner = findViewById(R.id.btn_budget_planner);
-        btnVendors = findViewById(R.id.btn_vendors);
-
         // Load default fragment
-        loadFragment(new EventsFragment());
+        //loadFragment(new EventsFragment());
 
         // Handle bottom navigation item selection
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
@@ -61,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 int itemId = item.getItemId();
 
                 if (itemId == R.id.nav_events) {
-                    selectedFragment = new EventsFragment();
+                    selectedFragment = new AddEventFragment();
                 } else if (itemId == R.id.nav_timeline) {
-                    selectedFragment = new TimelineFragment();
+                    selectedFragment = new VendorsFragment();
                 } else if (itemId == R.id.nav_guests) {
                     selectedFragment = new GuestsFragment();
                 } else if (itemId == R.id.nav_budget) {
@@ -76,39 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 return false;
-            }
-        });
-
-        // Button Click Listeners
-        btnEventDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open AddEventFragment
-                loadFragment(new AddEventFragment());
-            }
-        });
-
-        btnGuestManagement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open GuestsFragment
-                loadFragment(new GuestsFragment());
-            }
-        });
-
-        btnBudgetPlanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open BudgetFragment
-                loadFragment(new BudgetFragment());
-            }
-        });
-
-        btnVendors.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open VendorsFragment
-                loadFragment(new VendorsFragment());
             }
         });
 
