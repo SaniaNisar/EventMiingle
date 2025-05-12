@@ -31,7 +31,9 @@
     <string name="RoleSelection">Select Your Role</string>
     <string name="RoleContinueButtonText">Continue</string>
     <string name="Role2">Vendor</string>
+    <string name="bugReport">Please describe the bug you are encountering.</string>
     <string name="Role1">User</string>
+    <string name="feedBack">Your feedback helps us improve. Please let us know what you think.</string>
     <string name="navigation_drawer_open">Open drawer</string>
     <string name="navigation_drawer_close">Close drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
