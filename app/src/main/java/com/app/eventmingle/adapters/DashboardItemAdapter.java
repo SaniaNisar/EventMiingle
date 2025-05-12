@@ -1,5 +1,6 @@
 package com.app.eventmingle.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.app.eventmingle.R;
+import com.app.eventmingle.activities.EventDetailsActivity;
 import com.app.eventmingle.models.DashboardItem;
 import com.app.eventmingle.models.Event;
 
@@ -43,7 +45,15 @@ public class DashboardItemAdapter extends RecyclerView.Adapter<DashboardItemAdap
         Event event = eventList.get(position);
         holder.tvTitle.setText(event.getEventName());
         holder.tvSubtitle.setText(event.getDescription());
+
+        // ← HERE: launch EventDetailsActivity with the eventId
+        holder.itemView.setOnClickListener(v -> {
+            Intent i = new Intent(v.getContext(), EventDetailsActivity.class);
+            i.putExtra(EventDetailsActivity.EXTRA_EVENT_ID, event.getEventId());
+            v.getContext().startActivity(i);
+        });
     }
+
 
     @Override
     public int getItemCount() {
