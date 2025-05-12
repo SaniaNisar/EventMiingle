@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/bg_aboutus_gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,10 +11,9 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="113dp"
-            android:layout_height="114dp"
+            android:layout_width="244dp"
+            android:layout_height="235dp"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
             android:layout_marginBottom="25dp"
             android:contentDescription="App Logo"
             android:src="@drawable/logo" />
@@ -30,8 +30,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="142dp"
-            android:layout_marginBottom="16dp"
+            android:layout_height="105dp"
             android:text="Your personal event planner. From birthdays to weddings, we help you coordinate tasks, vendors, and guests easily."
             android:textAlignment="center"
             android:textColor="?android:textColorPrimary"
@@ -39,16 +38,18 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="32dp"
             android:layout_marginTop="8dp"
-            android:text="Developed by:"
+            android:gravity="center"
+            android:text="Developed By:"
             android:textSize="25dp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="190dp"
-            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:layout_marginBottom="12dp"
             android:text="Ayesha Haroon  |  21L-6116\nSadia Saleem  |  21L- 6081\nSania Nisar  |  21L-6065\n\nsasgroup@gmail.com"
             android:textSize="16sp" />
 
