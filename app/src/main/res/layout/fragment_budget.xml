@@ -1,31 +1,54 @@
 <!-- res/layout/fragment_budget.xml -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp"
+   >
 
     <LinearLayout
         android:id="@+id/layout_budget"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="12dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
 
-        <!-- Budget Input -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Set Max Budget" />
+            android:text="Manage Budget"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="30dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+
+            android:layout_marginVertical="8dp"/>
+        <!-- Budget Input -->
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+         android:textSize="16sp"
+
+            android:layout_height="wrap_content"
+            android:text="Select your Max Budget: " />
 
         <LinearLayout
             android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp">
 
             <Button
                 android:id="@+id/btn_decrement"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="-" />
 
             <EditText
@@ -41,41 +64,60 @@
 
             <Button
                 android:id="@+id/btn_increment"
-                android:layout_width="wrap_content"
+                android:layout_width="62dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="+" />
         </LinearLayout>
 
         <!-- Remaining Budget -->
-        <TextView
-            android:id="@+id/tv_remaining"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remaining Budget: 0" />
 
+<LinearLayout
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_background"
+    >
         <!-- Expense List Input -->
-        <EditText
-            android:id="@+id/et_item_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:hint="Item name"
-            android:padding="12dp" />
+    <EditText
+        android:id="@+id/et_item_name"
+        android:layout_width="199dp"
+        android:layout_height="match_parent"
+        android:hint="Item name"
+        android:minHeight="48dp"
+        android:padding="8dp"
 
-        <EditText
-            android:id="@+id/et_item_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:hint="Item price"
-            android:inputType="numberDecimal"
-            android:padding="12dp" />
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_item_price"
+        android:layout_width="131dp"
+        android:layout_height="wrap_content"
+        android:hint="Item price"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:padding="8dp"
+
+        android:textSize="16dp" />
+</LinearLayout>
 
         <Button
             android:id="@+id/btn_add_item"
             android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_plum_rounded"
+            android:text="Add Item"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_remaining"
+            android:layout_width="159dp"
             android:layout_height="wrap_content"
-            android:text="Add Item" />
+            android:layout_marginTop="10dp"
+            android:layout_gravity="right"
+            android:text="Remaining Budget: 0" />
 
         <!-- Table of Items -->
         <TableLayout
@@ -90,7 +132,9 @@
             android:id="@+id/btn_submit_budget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save Budget"
-            android:layout_marginTop="12dp" />
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/btn_plum_rounded"
+            android:text="Save Budget" />
     </LinearLayout>
 </ScrollView>
