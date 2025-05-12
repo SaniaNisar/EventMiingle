@@ -4,76 +4,72 @@ import java.util.Map;
 
 public class Event {
 
-    private String title;
+    private String eventId;
 
+    private String eventName;
     private String description;
-
-    private String date;
-
-    private String time;
-
+    private String dateTime; // e.g. "2025-05-15 18:00"
     private String venue;
-
     private String hostId;
-
+    private String hostName; // You can fetch this using hostId from user data
     private String theme;
-
-    private String type;
-
+    private String category;
     private double budget;
-
-    private double budgetUsed;
-
     private long createdAt;
 
-    private Map<String, Boolean> guests;
-
-    private Map<String, Boolean> management;
-
-    private Map<String, Boolean> vendors;
-
-    private Map<String, Announcement> announcements;
-
-    private Map<String, Task> tasks;
-
+    private Map<String, Boolean> guestList;
 
     public Event() {
     }
 
-    public String getTitle() {
-        return this.title;
+    public Event(String eventId, String eventName, String eventDescription, String eventDateTime,
+                 String eventHostId, String eventHostName, String eventLocation) {
+        this.eventId = eventId;
+        this.eventName = eventName;
+        this.description = eventDescription;
+        this.dateTime = eventDateTime;
+        this.hostId = eventHostId;
+        this.hostName = eventHostName;
+        this.venue = eventLocation;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    // Getters and setters
+
+    public void setEventId(String eventId)
+    {
+        this.eventId = eventId;
+    }
+
+    public String getEventId()
+    {
+        return this.eventId;
+    }
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getDate() {
-        return this.date;
+    public String getDateTime() {
+        return dateTime;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return this.time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
     public String getVenue() {
-        return this.venue;
+        return venue;
     }
 
     public void setVenue(String venue) {
@@ -81,90 +77,58 @@ public class Event {
     }
 
     public String getHostId() {
-        return this.hostId;
+        return hostId;
     }
 
     public void setHostId(String hostId) {
         this.hostId = hostId;
     }
 
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
+
     public String getTheme() {
-        return this.theme;
+        return theme;
     }
 
     public void setTheme(String theme) {
         this.theme = theme;
     }
 
-    public String getType() {
-        return this.type;
+    public String getCategory() {
+        return category;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public double getBudget() {
-        return this.budget;
+        return budget;
     }
 
     public void setBudget(double budget) {
         this.budget = budget;
     }
 
-    public double getBudgetUsed() {
-        return this.budgetUsed;
-    }
-
-    public void setBudgetUsed(double budgetUsed) {
-        this.budgetUsed = budgetUsed;
-    }
-
     public long getCreatedAt() {
-        return this.createdAt;
+        return createdAt;
     }
 
     public void setCreatedAt(long createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Map<String, Boolean> getGuests() {
-        return this.guests;
+    public Map<String, Boolean> getGuestList() {
+        return guestList;
     }
 
-    public void setGuests(Map<String, Boolean> guests) {
-        this.guests = guests;
-    }
-
-    public Map<String, Boolean> getManagement() {
-        return this.management;
-    }
-
-    public void setManagement(Map<String, Boolean> management) {
-        this.management = management;
-    }
-
-    public Map<String, Boolean> getVendors() {
-        return this.vendors;
-    }
-
-    public void setVendors(Map<String, Boolean> vendors) {
-        this.vendors = vendors;
-    }
-
-    public Map<String, Announcement> getAnnouncements() {
-        return this.announcements;
-    }
-
-    public void setAnnouncements(Map<String, Announcement> announcements) {
-        this.announcements = announcements;
-    }
-
-    public Map<String, Task> getTasks() {
-        return this.tasks;
-    }
-
-    public void setTasks(Map<String, Task> tasks) {
-        this.tasks = tasks;
+    public void setGuestList(Map<String, Boolean> guestList) {
+        this.guestList = guestList;
     }
 }

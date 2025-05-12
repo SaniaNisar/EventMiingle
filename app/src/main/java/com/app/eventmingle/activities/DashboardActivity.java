@@ -3,6 +3,7 @@ package com.app.eventmingle.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.eventmingle.R;
 import com.app.eventmingle.adapters.DashboardItemAdapter;
 import com.app.eventmingle.models.DashboardItem;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -28,6 +30,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
+    private FloatingActionButton fabAddEvent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,16 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         adapter = new DashboardItemAdapter(items);
         recyclerView.setAdapter(adapter);
+
+        fabAddEvent = findViewById(R.id.fabAddEvent);
+        fabAddEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DashboardActivity.this, MainActivity.class));
+            }
+        });
+
+
     }
 
     @Override
@@ -77,7 +91,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         }else if (id == R.id.nav_profile) {
             startActivity(new Intent(this, ProfileActivity.class));
         }else if (id == R.id.nav_add_event) {
-            startActivity(new Intent(this, AddEventActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         }
 
 
