@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Title"
-        android:text="@string/worktitle"/>
+        />
 
     <!-- Service For Input (Horizontal Checkboxes) -->
     <TextView
@@ -106,7 +106,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Expertise"
-        android:text="@string/your_experties"/>
+        />
 
     <!-- Cities Input -->
     <TextView
@@ -120,8 +120,7 @@
         android:id="@+id/editText_cities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your Cities"
-        android:text="@string/your_cities"/>
+        android:hint="Enter your Cities" />
 
     <!-- Location Type Input -->
     <TextView
@@ -135,8 +134,7 @@
         android:id="@+id/editText_locationType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Location Type"
-        android:text="@string/your_location_type"/>
+        android:hint="Enter Location Type" />
 
     <!-- Home Service Checkbox (Horizontal) -->
     <TextView
@@ -216,7 +214,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Description"
-        android:text="@string/workdescription"
         android:inputType="textMultiLine"/>
 
     <!-- Image Upload Section -->

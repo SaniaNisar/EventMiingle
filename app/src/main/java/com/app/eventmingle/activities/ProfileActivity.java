@@ -41,14 +41,14 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_user_profile_setup);
 
         etName = findViewById(R.id.etName);
         etEmail = findViewById(R.id.etEmail);
         etPhone = findViewById(R.id.etPhone);
 //        profileImage = findViewById(R.id.profileImage);
         btnSave = findViewById(R.id.btnSave);
-        recyclerViewEvents = findViewById(R.id.recyclerViewEvents);
+//        recyclerViewEvents = findViewById(R.id.recyclerViewEvents);
 
         String uid = FirebaseUtils.getCurrentUserId();
         userRef = FirebaseUtils.getUsersRef().child(uid);
@@ -57,15 +57,15 @@ public class ProfileActivity extends AppCompatActivity {
 //        profileImage.setOnClickListener(v -> openImagePicker());
         btnSave.setOnClickListener(v -> uploadAndSaveProfile());
 
-        setupRecyclerView();
+//        setupRecyclerView();
         loadUserProfile();
     }
 
-    private void setupRecyclerView() {
-        recyclerViewEvents.setLayoutManager(new LinearLayoutManager(this));
-        eventAdapter = new EventAdapter(eventList);
-        recyclerViewEvents.setAdapter(eventAdapter);
-    }
+//    private void setupRecyclerView() {
+//        recyclerViewEvents.setLayoutManager(new LinearLayoutManager(this));
+//        eventAdapter = new EventAdapter(eventList);
+//        recyclerViewEvents.setAdapter(eventAdapter);
+//    }
 
     private void openImagePicker() {
         Intent intent = new Intent(Intent.ACTION_PICK);
