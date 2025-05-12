@@ -16,18 +16,42 @@
         android:layout_marginBottom="80dp"
         />
 
-    <!-- FAB that floats over the nav bar -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="35dp"
-        android:src="@drawable/ic_add"
-        android:contentDescription="Add Task"
-        app:backgroundTint="@color/purple_500"
-        app:tint="@android:color/white"
-        />
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btn_event_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Event Details"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btn_guest_management"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guest Management"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btn_budget_planner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Budget Planner"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btn_vendors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vendors"/>
+
+    </LinearLayout>
 
     <!-- BottomNavigationView -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

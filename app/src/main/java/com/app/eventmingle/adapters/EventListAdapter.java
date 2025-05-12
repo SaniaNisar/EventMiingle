@@ -33,7 +33,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         Event event = eventList.get(position);
-        holder.textViewEventName.setText(event.getTitle());
+       // holder.textViewEventName.setText(event.getTitle());
         holder.textViewEventDetails.setText(event.getDescription());
 
         holder.buttonEdit.setOnClickListener(v -> {
@@ -43,7 +43,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
 
         holder.buttonDelete.setOnClickListener(v -> {
             // Delete the event from Firebase
-            eventsRef.child(event.getTitle()).removeValue();
+          //  eventsRef.child(event.getTitle()).removeValue();
         });
     }
 

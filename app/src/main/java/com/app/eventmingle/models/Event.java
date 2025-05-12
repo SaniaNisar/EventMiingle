@@ -4,6 +4,8 @@ import java.util.Map;
 
 public class Event {
 
+    private String eventId;
+
     private String eventName;
     private String description;
     private String dateTime; // e.g. "2025-05-15 18:00"
@@ -20,7 +22,28 @@ public class Event {
     public Event() {
     }
 
+    public Event(String eventId, String eventName, String eventDescription, String eventDateTime,
+                 String eventHostId, String eventHostName, String eventLocation) {
+        this.eventId = eventId;
+        this.eventName = eventName;
+        this.description = eventDescription;
+        this.dateTime = eventDateTime;
+        this.hostId = eventHostId;
+        this.hostName = eventHostName;
+        this.venue = eventLocation;
+    }
+
     // Getters and setters
+
+    public void setEventId(String eventId)
+    {
+        this.eventId = eventId;
+    }
+
+    public String getEventId()
+    {
+        return this.eventId;
+    }
     public String getEventName() {
         return eventName;
     }
