@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="190dp"
             android:layout_marginBottom="16dp"
-            android:text="Ayesha Haroon  |  21L-6116\nSadia Saleem  |  21L-\nSania Nisar  |  21L-6065\n\nsasgroup@gmail.com"
+            android:text="Ayesha Haroon  |  21L-6116\nSadia Saleem  |  21L- 6081\nSania Nisar  |  21L-6065\n\nsasgroup@gmail.com"
             android:textSize="16sp" />
 
         <TextView
