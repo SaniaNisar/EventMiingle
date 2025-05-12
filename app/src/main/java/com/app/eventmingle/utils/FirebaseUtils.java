@@ -71,7 +71,6 @@ public class FirebaseUtils {
     }
 
 
-
     // Check if user is logged in
     public static boolean isUserLoggedIn() {
         return getCurrentUser() != null;
