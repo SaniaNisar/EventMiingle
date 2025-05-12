@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:scrollbars="vertical">
+
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event Title"
+        android:inputType="textCapWords|textMultiLine"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event Description"
+        android:inputType="textCapSentences|textMultiLine"
+        android:padding="10dp"
+        android:maxLines="5"/>
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event Date"
+        android:inputType="date|textShortMessage"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event Time"
+        android:inputType="time|textShortMessage"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/editTextVenue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event Venue"
+        android:inputType="textCapWords|textMultiLine"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/buttonSaveEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Event"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>
