@@ -6,24 +6,34 @@
     android:elevation="4dp">
 
     <LinearLayout
-        android:padding="16dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_event_gradient"
+        android:padding="16dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="4dp">
 
+        <!-- Class Title -->
         <TextView
             android:id="@+id/tvDashboardTitle"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:text="Title"
+            android:textStyle="bold" />
 
+
+        <!-- Class Category (Optional) -->
         <TextView
             android:id="@+id/tvDashboardSubtitle"
-            android:text="Subtitle"
-            android:textSize="14sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Subtitle"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
