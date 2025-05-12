@@ -19,7 +19,7 @@ public class EventPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 1: return GuestListFragment.newInstance(eventId);
-//            case 2: return BudgetFragmentList.newInstance(eventId);
+            case 2: return BudgetFragmentList.newInstance(eventId);
 //            case 3: return VendorsFragmentList.newInstance(eventId);
             case 0:
             default:

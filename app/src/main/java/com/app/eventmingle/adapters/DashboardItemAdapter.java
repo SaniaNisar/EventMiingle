@@ -46,11 +46,11 @@ public class DashboardItemAdapter extends RecyclerView.Adapter<DashboardItemAdap
         holder.tvTitle.setText(event.getEventName());
         holder.tvSubtitle.setText(event.getDescription());
 
-        // ← Add your click listener here:
+        // ← HERE: launch EventDetailsActivity with the eventId
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), EventDetailsActivity.class);
-            intent.putExtra(EventDetailsActivity.EXTRA_EVENT_ID, event.getEventId());
-            v.getContext().startActivity(intent);
+            Intent i = new Intent(v.getContext(), EventDetailsActivity.class);
+            i.putExtra(EventDetailsActivity.EXTRA_EVENT_ID, event.getEventId());
+            v.getContext().startActivity(i);
         });
     }
 
