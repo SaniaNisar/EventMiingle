@@ -1,22 +1,32 @@
 package com.app.eventmingle.models;
 
+import java.util.UUID;
+
 public class Vendor {
     private String vendorId;
     private String name;
+    private String description;
+    private String contactNumber;
+    private String address;
     private String email;
-    private String serviceType; // e.g. catering, decoration
-    private String phone;
+    private String serviceType;
 
-    public Vendor() {}
-
-    public Vendor(String vendorId, String name, String email, String serviceType, String phone) {
-        this.vendorId = vendorId;
-        this.name = name;
-        this.email = email;
-        this.serviceType = serviceType;
-        this.phone = phone;
+    // Default constructor required for Firebase
+    public Vendor() {
     }
 
+    // Constructor with all fields (vendorId auto-generated)
+    public Vendor(String name, String description, String contactNumber, String address, String email, String serviceType) {
+        this.vendorId = UUID.randomUUID().toString();
+        this.name = name;
+        this.description = description;
+        this.contactNumber = contactNumber;
+        this.address = address;
+        this.email = email;
+        this.serviceType = serviceType;
+    }
+
+    // Getters and Setters
     public String getVendorId() {
         return vendorId;
     }
@@ -31,6 +41,30 @@ public class Vendor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getEmail() {
@@ -48,13 +82,4 @@ public class Vendor {
     public void setServiceType(String serviceType) {
         this.serviceType = serviceType;
     }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 }
-
