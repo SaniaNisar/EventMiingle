@@ -1,14 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- res/layout/fragment_budget.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.BudgetFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/layout_budget"
+        android:orientation="vertical"
+        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_BUDGET_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <!-- Budget Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Max Budget" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btn_decrement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+
+            <EditText
+                android:id="@+id/et_max_budget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:text="0"
+                android:gravity="center"
+                android:padding="12dp" />
+
+            <Button
+                android:id="@+id/btn_increment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+" />
+        </LinearLayout>
+
+        <!-- Remaining Budget -->
+        <TextView
+            android:id="@+id/tv_remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remaining Budget: 0" />
+
+        <!-- Expense List Input -->
+        <EditText
+            android:id="@+id/et_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="Item name"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/et_item_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="Item price"
+            android:inputType="numberDecimal"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btn_add_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Item" />
+
+        <!-- Table of Items -->
+        <TableLayout
+            android:id="@+id/table_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:layout_marginTop="8dp" />
+
+        <!-- Submit -->
+        <Button
+            android:id="@+id/btn_submit_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save Budget"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+</ScrollView>
