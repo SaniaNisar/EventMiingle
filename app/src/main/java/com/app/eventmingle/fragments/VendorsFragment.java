@@ -1,5 +1,7 @@
 package com.app.eventmingle.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,7 @@ import java.util.List;
 public class VendorsFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private String eventId;
     private VendorAdapter vendorAdapter;
     private List<Vendor> vendorList;
     private DatabaseReference vendorRef;
@@ -39,11 +42,14 @@ public class VendorsFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.vendorsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("EventPrefs", Context.MODE_PRIVATE);
+        eventId = sharedPreferences.getString("eventId", null); // Assuming eventId is stored as string
+
 
         vendorList = new ArrayList<>();
         vendorAdapter = new VendorAdapter(vendorList, vendor -> {
             // Handle "Add to Event" button click
-            Toast.makeText(getContext(), "Added: " + vendor.getName(), Toast.LENGTH_SHORT).show();
+            addVendorToEvent(vendor);
         });
         recyclerView.setAdapter(vendorAdapter);
 
@@ -55,6 +61,24 @@ public class VendorsFragment extends Fragment {
         fetchVendorsFromFirebase();
 
         return view;
+    }
+
+    private void addVendorToEvent(Vendor vendor) {
+        if (eventId == null) {
+            Toast.makeText(getContext(), "Event ID not found", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference("events").child(eventId);
+
+        // Add the vendor by vendorId to the event
+        eventRef.child("vendors").child(vendor.getVendorId()).setValue(vendor)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(getContext(), "Vendor added to event", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Failed to add vendor: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                });
     }
 
     private void fetchVendorsFromFirebase() {
