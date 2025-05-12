@@ -8,35 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.app.eventmingle.R;
 import com.app.eventmingle.models.DashboardItem;
+import com.app.eventmingle.models.Event;
 
 import java.util.List;
 
 public class DashboardItemAdapter extends RecyclerView.Adapter<DashboardItemAdapter.ViewHolder> {
 
-    private List<DashboardItem> items;
+    private List<Event> eventList;
 
-    public DashboardItemAdapter(List<DashboardItem> items) {
-        this.items = items;
-    }
-
-    @NonNull
-    @Override
-    public DashboardItemAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_dashboard, parent, false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull DashboardItemAdapter.ViewHolder holder, int position) {
-        DashboardItem item = items.get(position);
-        holder.tvTitle.setText(item.getTitle());
-        holder.tvSubtitle.setText(item.getSubtitle());
-    }
-
-    @Override
-    public int getItemCount() {
-        return items.size();
+    public DashboardItemAdapter(List<Event> eventList) {
+        this.eventList=eventList;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -47,5 +28,25 @@ public class DashboardItemAdapter extends RecyclerView.Adapter<DashboardItemAdap
             tvTitle = itemView.findViewById(R.id.tvDashboardTitle);
             tvSubtitle = itemView.findViewById(R.id.tvDashboardSubtitle);
         }
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_dashboard, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Event event = eventList.get(position);
+        holder.tvTitle.setText(event.getEventName());
+        holder.tvSubtitle.setText(event.getDescription());
+    }
+
+    @Override
+    public int getItemCount() {
+        return eventList.size();
     }
 }

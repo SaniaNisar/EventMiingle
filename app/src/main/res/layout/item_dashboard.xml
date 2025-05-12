@@ -3,7 +3,8 @@
     android:layout_margin="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +13,8 @@
         android:background="@drawable/bg_event_gradient"
         android:padding="16dp"
         android:layout_marginBottom="8dp"
-        android:elevation="4dp">
+        android:elevation="4dp"
+        android:layout_margin="8dp">
 
         <!-- Class Title -->
         <TextView
