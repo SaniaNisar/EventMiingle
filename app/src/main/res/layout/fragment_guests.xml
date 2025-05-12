@@ -3,19 +3,45 @@
     android:orientation="vertical"
     android:padding="24dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="20dp">
 
-    <EditText
-        android:id="@+id/et_guest_email"
-        android:hint="Enter guest's email"
-        android:inputType="textEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="48dp" />
-
-    <Button
-        android:id="@+id/btn_invite_guest"
-        android:text="Send Invitation"
-        android:layout_marginTop="16dp"
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Guest List"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="195dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/card_yellow_rounded"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <EditText
+            android:id="@+id/et_guest_email"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/card_background"
+            android:hint="Enter guest's email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btn_invite_guest"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/card_plum_rounded"
+            android:text="Invite" />
+
+    </LinearLayout>
 </LinearLayout>
