@@ -1,7 +1,9 @@
 package com.app.eventmingle.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ import java.util.UUID;
 public class GuestsFragment extends Fragment {
 
     private EditText etGuestEmail;
+    SharedPreferences sharedPreferences;
     private Button btnInviteGuest;
     private String eventId; // Automatically fetched from latest created event
 
@@ -41,6 +44,7 @@ public class GuestsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         etGuestEmail = view.findViewById(R.id.et_guest_email);
         btnInviteGuest = view.findViewById(R.id.btn_invite_guest);
+        sharedPreferences = requireActivity().getSharedPreferences("EventPrefs", Context.MODE_PRIVATE);
 
         // Automatically get the latest created event by this user
         fetchLastCreatedEventId();
@@ -65,7 +69,6 @@ public class GuestsFragment extends Fragment {
      */
 
     private void fetchLastCreatedEventId() {
-        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("EventPrefs", Context.MODE_PRIVATE);
         eventId = sharedPreferences.getString("eventId", null);
 
         if (eventId != null) {
@@ -78,7 +81,7 @@ public class GuestsFragment extends Fragment {
     }
 
 
-    private void inviteGuest() {
+    /*private void inviteGuest() {
         String email = etGuestEmail.getText().toString().trim();
 
         if (TextUtils.isEmpty(email)) {
@@ -103,5 +106,64 @@ public class GuestsFragment extends Fragment {
         }).addOnFailureListener(e -> {
             Toast.makeText(getContext(), "Failed to invite: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
+    }
+     */
+    private void inviteGuest() {
+        String email = etGuestEmail.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email)) {
+            etGuestEmail.setError("Email required");
+            return;
+        }
+
+        if (TextUtils.isEmpty(eventId)) {
+            Toast.makeText(getContext(), "No event found. Please create one first.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Save guest in Firebase
+        String hostId = FirebaseUtils.getCurrentUserId();
+        String guestId = UUID.randomUUID().toString();
+
+        Guest guest = new Guest(guestId, hostId, eventId, email);
+
+        DatabaseReference ref = FirebaseUtils.getGuestsRef().child(guestId);
+        ref.setValue(guest).addOnSuccessListener(unused -> {
+            sendEmailInvite(email);
+            Toast.makeText(getContext(), "Invitation saved & email intent sent", Toast.LENGTH_SHORT).show();
+            etGuestEmail.setText("");
+        }).addOnFailureListener(e -> {
+            Toast.makeText(getContext(), "Failed to invite: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    private void sendEmailInvite(String recipientEmail) {
+        String hostName = sharedPreferences.getString("hostName", "Your host");
+        String eventTitle = sharedPreferences.getString("eventName", "Our Event");
+        String description = sharedPreferences.getString("eventDescription", "You're invited!");
+        String venue = sharedPreferences.getString("eventVenue", "To be announced");
+        String dateTime = sharedPreferences.getString("eventDateTime", "Check your calendar!");
+
+        String subject = "Invitation to " + eventTitle;
+        String message = "Dear Guest,\n\n"
+                + "Greetings from " + hostName + "!\n\n"
+                + "You are warmly invited to our upcoming event:\n\n"
+                + "🎉 *" + eventTitle + "*\n"
+                + "📍 Venue: " + venue + "\n"
+                + "📅 Date & Time: " + dateTime + "\n\n"
+                + "📝 Description:\n" + description + "\n\n"
+                + "We would be honored by your presence.\n\n"
+                + "Best regards,\n" + hostName;
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:" + recipientEmail));
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+
+        if (intent.resolveActivity(requireActivity().getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(getContext(), "No email app found to send invitation.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
