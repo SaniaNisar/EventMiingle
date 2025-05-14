@@ -1,12 +1,13 @@
 package com.app.eventmingle.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +40,9 @@ public class GuestListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inf.inflate(R.layout.fragment_guest_list, container, false);
         rv = v.findViewById(R.id.rvGuests);
+        int outer = dpToPx(getContext(), 8);
+        rv.setClipToPadding(false);
+        rv.setPadding(0, outer, 0, outer);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new GuestAdapter(guests);
         rv.setAdapter(adapter);
@@ -79,5 +83,13 @@ public class GuestListFragment extends Fragment {
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+    // Utility to convert dp → px
+    private int dpToPx(Context context, int dp) {
+        return Math.round(TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dp,
+                getResources().getDisplayMetrics()
+        ));
     }
 }

@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="24dp"
+        android:layout_marginTop="110dp">
 
         <!-- Title -->
         <TextView
@@ -61,12 +62,6 @@
                 android:textSize="15sp"/>
         </LinearLayout>
 
-
-        <LinearLayout
-            android:id="@+id/layoutNotifications"
-            style="@style/SettingRowStyle">
-            <TextView android:text="Notifications" android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutLogout"
@@ -124,52 +119,52 @@
             <TextView android:text="Send Feedback" android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <!-- THEME Section -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+<!--        &lt;!&ndash; THEME Section &ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center_vertical">-->
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/black"/>
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@color/black"/>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:text="THEME"
-                android:textStyle="bold"
-                android:textColor="#555555"
-                android:textSize="14sp"/>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="3dp"-->
+<!--                android:layout_marginRight="3dp"-->
+<!--                android:text="THEME"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="#555555"-->
+<!--                android:textSize="14sp"/>-->
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:background="@color/black"/>
-        </LinearLayout>
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@color/black"/>-->
+<!--        </LinearLayout>-->
 
 
-        <LinearLayout
-            style="@style/SettingRowStyle">
+<!--        <LinearLayout-->
+<!--            style="@style/SettingRowStyle">-->
 
-            <TextView
-                android:text="Dark Mode"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="15sp" />
+<!--            <TextView-->
+<!--                android:text="Dark Mode"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="15sp" />-->
 
-            <Switch
-                android:id="@+id/switchDarkMode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+<!--            <Switch-->
+<!--                android:id="@+id/switchDarkMode"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content" />-->
+<!--        </LinearLayout>-->
 
     </LinearLayout>
 </ScrollView>

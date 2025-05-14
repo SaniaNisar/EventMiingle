@@ -42,10 +42,10 @@ public class EventInfoFragment extends Fragment {
                 if (e==null) return;
                 tvName.setText(e.getEventName());
                 tvDesc.setText(e.getDescription());
-                tvDate.setText(e.getDateTime());
-                tvVenue.setText(e.getVenue());
-                tvTheme.setText(e.getTheme());
-                tvCat.setText(e.getCategory());
+                tvDate.setText("Date: "+ e.getDateTime());
+                tvVenue.setText("Venue: " +e.getVenue());
+                tvTheme.setText("Theme: "+e.getTheme());
+                tvCat.setText(" Category: "+e.getCategory());
             }
             @Override public void onCancelled(@NonNull DatabaseError err){}
         });

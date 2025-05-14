@@ -78,9 +78,6 @@ public class SettingsFragment extends Fragment {
         view.findViewById(R.id.layoutAccount).setOnClickListener(v ->
                 startActivity(new Intent(getContext(), ProfileActivity.class)));
 
-        view.findViewById(R.id.layoutNotifications).setOnClickListener(v ->
-                loadFragment(new NotificationsFragment()));
-
         view.findViewById(R.id.layoutReportBug).setOnClickListener(v ->
                 loadFragment(new ReportBugFragment()));
 
@@ -103,12 +100,6 @@ public class SettingsFragment extends Fragment {
                         getActivity().finish();
                     }
                 }));
-
-        Switch darkModeSwitch = view.findViewById(R.id.switchDarkMode);
-        darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            AppCompatDelegate.setDefaultNightMode(
-                    isChecked ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
-        });
 
         return view;
     }

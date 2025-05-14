@@ -1,64 +1,73 @@
+// com/app/eventmingle/fragments/EventVendorsFragment.java
 package com.app.eventmingle.fragments;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+import androidx.annotation.*;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.*;
 import com.app.eventmingle.R;
+import com.app.eventmingle.adapters.VendorAdapter;
+import com.app.eventmingle.models.Vendor;
+import com.app.eventmingle.utils.FirebaseUtils;
+import com.google.firebase.database.*;
+import java.util.*;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link VendorsFragmentList#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
 public class VendorsFragmentList extends Fragment {
+    private static final String ARG_EVENT_ID = "eventId";
+    private String eventId;
+    private RecyclerView rv;
+    private VendorAdapter adapter;
+    private final List<Vendor> list = new ArrayList<>();
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment VendorsFragmentList.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static VendorsFragmentList newInstance(String param1, String param2) {
-        VendorsFragmentList fragment = new VendorsFragmentList();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static VendorsFragmentList newInstance(String eventId) {
+        VendorsFragmentList f = new VendorsFragmentList();
+        Bundle b = new Bundle();
+        b.putString(ARG_EVENT_ID, eventId);
+        f.setArguments(b);
+        return f;
     }
 
-    public VendorsFragmentList() {
-        // Required empty public constructor
-    }
+    @Nullable @Override
+    public View onCreateView(@NonNull LayoutInflater inf,
+                             ViewGroup c, Bundle s) {
+        View v = inf.inflate(R.layout.fragment_vendors_list, c, false);
+        rv = v.findViewById(R.id.rvVendors);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        // pass null → hides the Add button
+        adapter = new VendorAdapter(list, null);
+        rv.setAdapter(adapter);
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        if (getArguments()!=null) {
+            eventId = getArguments().getString(ARG_EVENT_ID);
         }
+        loadEventVendors();
+        return v;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_vendors_list, container, false);
+    private void loadEventVendors() {
+        FirebaseUtils.getEventsRef()
+                .child(eventId)
+                .child("vendors")
+                .addListenerForSingleValueEvent(new ValueEventListener(){
+                    @Override public void onDataChange(@NonNull DataSnapshot snap) {
+                        list.clear();
+                        for (DataSnapshot c : snap.getChildren()) {
+                            Vendor v = c.getValue(Vendor.class);
+                            if (v!=null) {
+                                v.setVendorId(c.getKey());
+                                list.add(v);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                    @Override public void onCancelled(@NonNull DatabaseError e) {
+                        Toast.makeText(getContext(),
+                                "Load failed: "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

@@ -1,7 +1,9 @@
 // com/app/eventmingle/fragments/BudgetListFragment.java
 package com.app.eventmingle.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +42,9 @@ public class BudgetFragmentList extends Fragment {
                              Bundle savedInstanceState) {
         View v = inf.inflate(R.layout.fragment_budget_list, container, false);
         rv = v.findViewById(R.id.rvBudget);
+        int outer = dpToPx(getContext(), 8);
+        rv.setClipToPadding(false);
+        rv.setPadding(0, outer, 0, outer);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new BudgetAdapter(budgets);
         rv.setAdapter(adapter);
@@ -72,6 +77,7 @@ public class BudgetFragmentList extends Fragment {
                         }
                         adapter.notifyDataSetChanged();
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError err) {
                         Toast.makeText(getContext(),
@@ -79,5 +85,14 @@ public class BudgetFragmentList extends Fragment {
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
+
+    }
+    // Utility to convert dp → px
+    private int dpToPx(Context context, int dp) {
+        return Math.round(TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dp,
+                getResources().getDisplayMetrics()
+        ));
     }
 }

@@ -1,5 +1,7 @@
 package com.app.eventmingle.adapters;
 
+import android.content.Context;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,11 +27,28 @@ public class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.VH> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VH h, int pos) {
-        Guest g = guests.get(pos);
-        h.title.setText(g.getEmail());
-        h.subtitle.setText("ID: " + g.getGuestId());
+    public void onBindViewHolder(@NonNull VH holder, int position) {
+        Guest guest = guests.get(position);
+        holder.title.setText(guest.getEmail());
+        holder.subtitle.setText("Invitation: Sent");
+
+        // 1) convert 8dp into px:
+        int margin = dpToPx(holder.itemView.getContext(), 8);
+
+        // 2) apply margin: left, top, right, bottom
+        ViewGroup.MarginLayoutParams lp =
+                (ViewGroup.MarginLayoutParams) holder.itemView.getLayoutParams();
+        lp.setMargins(margin, margin, margin, 0);
+        holder.itemView.setLayoutParams(lp);
+
+        // 3) apply padding inside the “card”
+        holder.itemView.setPadding(margin, margin, margin, margin);
+
+        // 4) set your card-shape background
+        holder.itemView.setBackgroundResource(R.drawable.card_background);
     }
+
+
 
     @Override public int getItemCount() { return guests.size(); }
 
@@ -40,5 +59,10 @@ public class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.VH> {
             title    = itemView.findViewById(android.R.id.text1);
             subtitle = itemView.findViewById(android.R.id.text2);
         }
+    }
+
+    private int dpToPx(Context ctx, float dp) {
+        return (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, dp, ctx.getResources().getDisplayMetrics());
     }
 }

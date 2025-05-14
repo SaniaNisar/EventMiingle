@@ -20,7 +20,7 @@ public class EventPagerAdapter extends FragmentStateAdapter {
         switch (position) {
             case 1: return GuestListFragment.newInstance(eventId);
             case 2: return BudgetFragmentList.newInstance(eventId);
-//            case 3: return VendorsFragmentList.newInstance(eventId);
+            case 3: return VendorsFragmentList.newInstance(eventId);
             case 0:
             default:
                 return EventInfoFragment.newInstance(eventId);
