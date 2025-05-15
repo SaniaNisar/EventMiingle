@@ -14,27 +14,30 @@ import java.util.List;
 import java.util.Map;
 
 public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.VH> {
+    public interface OnEditListener { void onEdit(@NonNull BudgetItem b); }
+
     private final List<BudgetItem> budgets;
-    public BudgetAdapter(List<BudgetItem> budgets) {
+    private final OnEditListener   editListener;
+
+    public BudgetAdapter(List<BudgetItem> budgets,
+                         OnEditListener editListener) {
         this.budgets = budgets;
+        this.editListener = editListener;
     }
 
-    @Override
-    public @NonNull VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    @NonNull @Override
+    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(android.R.layout.simple_list_item_2, parent, false);
         return new VH(v);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull VH h, int pos) {
+    @Override public void onBindViewHolder(@NonNull VH h, int pos) {
         BudgetItem b = budgets.get(pos);
 
-        // Title line: “Max vs Rem”
-        h.title.setText("Maximum Budget: " + b.getMaxBudget()
-                + "   |   Remaining: " + b.getRemainingBudget());
-
-        // If there are any itemized entries, list each “name: amount” on its own line:
+        // Title & subtitle as before…
+        h.title.setText("Max: " + b.getMaxBudget()
+                + " | Rem: " + b.getRemainingBudget());
         Map<String, Double> items = b.getItemizedExpenses();
         if (items != null && !items.isEmpty()) {
             StringBuilder sb = new StringBuilder();
@@ -44,22 +47,25 @@ public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.VH> {
                         .append(e.getValue())
                         .append("\n");
             }
-            // trim trailing newline
             h.subtitle.setText(sb.toString().trim());
         } else {
             h.subtitle.setText("No line-items");
         }
 
-        // apply your card styling / margins / padding as before...
-        int margin = dpToPx(h.itemView.getContext(), 8);
+        // card‐style margins/padding (same as you already have)
+        int m = dpToPx(h.itemView.getContext(), 8);
         ViewGroup.MarginLayoutParams lp =
                 (ViewGroup.MarginLayoutParams) h.itemView.getLayoutParams();
-        lp.setMargins(margin, margin, margin, 0);
+        lp.setMargins(m, m, m, 0);
         h.itemView.setLayoutParams(lp);
-        h.itemView.setPadding(margin, margin, margin, margin);
+        h.itemView.setPadding(m, m, m, m);
         h.itemView.setBackgroundResource(R.drawable.card_background);
-    }
 
+        // **NEW**: any tap on this card will trigger the edit callback
+        if (editListener != null) {
+            h.itemView.setOnClickListener(__ -> editListener.onEdit(b));
+        }
+    }
 
     @Override public int getItemCount() { return budgets.size(); }
 
@@ -71,10 +77,9 @@ public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.VH> {
             subtitle = itemView.findViewById(android.R.id.text2);
         }
     }
-    // helper to convert dp→px
+
     private int dpToPx(Context c, int dp) {
         float d = c.getResources().getDisplayMetrics().density;
         return Math.round(dp * d);
     }
-
 }

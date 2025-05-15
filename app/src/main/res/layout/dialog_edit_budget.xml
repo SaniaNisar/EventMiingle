@@ -17,6 +17,13 @@
             android:layout_height="wrap_content"/>
 
         <EditText
+            android:id="@+id/etDialogRemBudget"
+            android:hint="Remaining Amount"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
             android:id="@+id/etDialogItemized"
             android:hint="Itemized (one per line: name:amount)"
             android:inputType="textMultiLine"
