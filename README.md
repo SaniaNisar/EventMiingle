@@ -46,7 +46,7 @@ In today's fast-paced world, organizing an event requires efficient coordination
 
 | Layer               | Technology                 |
 |--------------------|----------------------------|
-| Mobile Development | Java (Android) / Flutter   |
+| Mobile Development | Java (Android)             |
 | Backend Services   | Firebase (Auth, DB, Hosting) |
 | API Integration    | Social media sharing, calendar sync |
 
