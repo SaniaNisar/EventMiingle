@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "876065826904",
+    "project_id": "eventmingle-88ace",
+    "storage_bucket": "eventmingle-88ace.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876065826904:android:c1c034d740db2ca293822d",
+        "android_client_info": {
+          "package_name": "com.app.eventmingle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkfeVUfd-P7ZvCq5nPHGKMjjMxnYUyM1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
