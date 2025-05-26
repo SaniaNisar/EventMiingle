@@ -228,8 +228,7 @@
         android:id="@+id/button_uploadImages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Images"
-        android:onClick="openImagePicker"/>
+        android:text="Select Images"/>
 
     <GridView
         android:id="@+id/imageGridView"
